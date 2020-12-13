@@ -1,4 +1,4 @@
-Desafio - Carga de dados através de arquivo - Compra cliente
+Desafio - Compra cliente
 =======================
 
 Diretório raiz dos codigos ./src
