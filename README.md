@@ -20,12 +20,12 @@ Diretório de arquivos de carga, confifuração e sql ./files
 * Instalar o o Golang : https://golang.org/doc/install
 
 * Executar os scripts SQLs `tmp_compracliente.sql` e  `compracliente.sql` para criar as tabelas
-  que estão na pasta ./files no pgAdmin
+  que estão na pasta ./files no 'pgAdmin'
 
 * Instalar o Visual Studio Code para visualizar o código e executar o projeto.
 
 * Alterar as configurações de banco postgres de acordo com seu usuário, senha, servidor, porta e database
-  Editar aquivo na pasta '/files/config.ini
+  Editar aquivo na pasta '/files/config.ini'
   Linha 1 : usuário
   Linha 2 : senha
   Linha 3 : servidor
