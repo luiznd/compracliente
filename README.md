@@ -15,32 +15,33 @@ Diretório de arquivos de carga, confifuração e sql ./files
 ```
 * Clonar projeto em um diretório local com o comando "git clone https://github.com/luiznd/compracliente"
 
-* <p>Instalar banco de dados postgresSql : https://www.postgresql.org/download/</p>
+* Instalar banco de dados postgresSql : https://www.postgresql.org/download/
 
-* <p>Instalar o o Golang : https://golang.org/doc/install</p>
+* Instalar o o Golang : https://golang.org/doc/install
 
-* <p>Executar os scripts SQLs `tmp_compracliente.sql` e  `compracliente.sql` para criar as tabelas que estão na pasta ./files no pgAdmin</p> 
+* Executar os scripts SQLs `tmp_compracliente.sql` e  `compracliente.sql` para criar as tabelas
+  que estão na pasta ./files no pgAdmin
 
 * <p>Instalar o Visual Studio Code para visualizar o código e executar o projeto.</p>
 ```
 
 ### Execução
 * No terminal do Visual Studio Code acessar a pasta `cd src`  e executar o comando:  `go run main.go`
-<br>
+
 ### Entidade
 \src\modules\compracliente\model\compracliente.go
-<br>
+
 ### Repositório model
 \src\modules\compracliente\repository\repository.go
-<br>
+
 \src\modules\compracliente\repository\compracliente_repository_postgres.go
-<br>
+
 ### Manipulação de arquivos
 \src\fileinput\inputfile.go
-<br>
+
 ### Utilitários, validação de cnpj/cpf
 \src\utils\cpfcnpj.go
-<br>
+
 ### Controle
 \src\utils\main.go
-<br>
+
