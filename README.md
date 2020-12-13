@@ -7,7 +7,7 @@ Diretório de arquivos de carga, confifuração e sql ./files
 
 ### Cadastro de compras por Cpf
 
-* Projeto de carga de dados através de arquivo texto utilizando linguagem GO e banco de dados PostgresSql.
+* Projeto de carga de dados ETL através de arquivo texto utilizando linguagem GO e banco de dados PostgresSql.
 
 * <p>Foco do projeto - > Carga de dados direto do arquivo base_teste.txt em tabela gateway temp_compracliente, Inclusão, validação e tratamento dos registros na tabela final compracliente.</p> 
 
