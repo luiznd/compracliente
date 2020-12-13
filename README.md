@@ -22,26 +22,26 @@ Diretório de arquivos de carga, confifuração e sql ./files
 * Executar os scripts SQLs `tmp_compracliente.sql` e  `compracliente.sql` para criar as tabelas
   que estão na pasta ./files no pgAdmin
 
-* <p>Instalar o Visual Studio Code para visualizar o código e executar o projeto.</p>
+* Instalar o Visual Studio Code para visualizar o código e executar o projeto.
 ```
 
 ### Execução
 * No terminal do Visual Studio Code acessar a pasta `cd src`  e executar o comando:  `go run main.go`
-
+<p></p>
 ### Entidade
 \src\modules\compracliente\model\compracliente.go
-
+<p></p>
 ### Repositório model
 \src\modules\compracliente\repository\repository.go
 
 \src\modules\compracliente\repository\compracliente_repository_postgres.go
-
+<p></p>
 ### Manipulação de arquivos
 \src\fileinput\inputfile.go
-
+<p></p>
 ### Utilitários, validação de cnpj/cpf
 \src\utils\cpfcnpj.go
-
+<p></p>
 ### Controle
 \src\utils\main.go
-
+<p></p>
