@@ -56,7 +56,7 @@ Diretório de arquivos de carga, confifuração e sql ./files
 \src\utils\cpfcnpj.go
 
 
-### Conecxão com o banco de dados
+### Conector Go com o banco de dados postgresSql
 \src\config\postgres.go
 
 ### Controle
