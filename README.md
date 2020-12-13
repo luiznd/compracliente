@@ -12,14 +12,18 @@ Projeto de carga de dados através de arquivo texto utilizando linguagem GO e ba
 
 ### Instalação
 Clonar projeto em um diretório local com o comando "git clone https://github.com/luiznd/compracliente"
+<br>
 Instalar banco de dados postgresSql : https://www.postgresql.org/download/
+<br>
 Instalar o o Golang : https://golang.org/doc/install
-Executar os scripts SQLs tmp_compracliente.sql e  compracliente.sql para criar as tabelas que estão na pasta ./files no pgAdmin 
+<br>
+Executar os scripts SQLs <u>tmp_compracliente.sql</u> e  <u>compracliente.sql</u> para criar as tabelas que estão na pasta ./files no pgAdmin 
+<br>
 Instalar o Visual Studio Code para visualizar e executar o projeto.
-
+<br>
 
 ### Execução
-No terminal do Visual Studio Code executar o comando: go run main.go
+No terminal do Visual Studio Code executar o comando:  <u>go run main.go </u>
 
 ### Entidade
 Controller - > module/Application/src/Application/Controller/IndexController.php
