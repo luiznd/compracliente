@@ -23,6 +23,15 @@ Diretório de arquivos de carga, confifuração e sql ./files
   que estão na pasta ./files no pgAdmin
 
 * Instalar o Visual Studio Code para visualizar o código e executar o projeto.
+
+* Alterar as configurações de banco postgres de acordo com seu usuário, senha, servidor, porta e database
+  Editar aquivo na pasta '/files/config.ini
+  Linha 1 : usuário
+  Linha 2 : senha
+  Linha 3 : servidor
+  Linha 4 : porta
+  Linha 5 : database
+  
 ```
 
 ### Execução
@@ -46,6 +55,9 @@ Diretório de arquivos de carga, confifuração e sql ./files
 ### Utilitários, validação de cnpj/cpf
 \src\utils\cpfcnpj.go
 
+
+### Conecxão com o banco de dados
+\src\config\postgres.go
 
 ### Controle
 \src\utils\main.go
