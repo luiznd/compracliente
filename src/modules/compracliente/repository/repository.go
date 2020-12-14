@@ -6,7 +6,7 @@ import (
 
 //CompraClienteRepository
 type CompraClienteRepository interface {
-	InsertCompra(string) error
+	InsertCompra([]string) error
 	Save(*model.CompraCliente) error
 	Update(string, *model.CompraCliente) error
 	Delete(string) error

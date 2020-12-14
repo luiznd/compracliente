@@ -48,10 +48,17 @@ func (r *compraclienteRepositoryPostgres) Save(compracliente *model.CompraClient
 }
 
 // Insere os registros que vem do arquivo em uma tabela tmp, faz o split das colunas e aplica uma regra para os nulos.
-func (r *compraclienteRepositoryPostgres) InsertCompra(linha string) error {
+func (r *compraclienteRepositoryPostgres) InsertCompra(linha []string) error {
 
 	query := `INSERT INTO "tmp_compracliente"("cpf", "private", "incompleto", "data_ultima_compra", "compra_ticket_medio", "ticket_ultima_compra", "loja_mais_frequente", "loja_ultima_compra", "data_criacao","data_modificacao")
-	VALUES(SPLIT_PART($1, ' ', 1), SPLIT_PART($1, ' ', 2), SPLIT_PART($1, ' ', 3), CASE SPLIT_PART($1, ' ', 4) WHEN 'NULL' THEN NULL ELSE TO_DATE(SPLIT_PART($1, ' ', 4),'YYYY-MM-DD') END, CASE SPLIT_PART($1, ' ', 5) WHEN 'NULL' THEN NULL ELSE cast(REPLACE(SPLIT_PART($1, ' ', 5),',','.') as float) END, CASE SPLIT_PART($1, ' ', 6) WHEN 'NULL' THEN NULL ELSE cast(REPLACE(SPLIT_PART($1, ' ', 6),',','.') as float) END, CASE SPLIT_PART($1, ' ', 7) WHEN 'NULL' THEN NULL ELSE SPLIT_PART($1, ' ', 7) END, CASE SPLIT_PART($1, ' ', 8) WHEN 'NULL' THEN NULL ELSE SPLIT_PART($1, ' ', 8) END, now(), now())`
+	VALUES($1, $2, $3, 
+		CASE $4 WHEN 'NULL' THEN NULL ELSE TO_DATE($4,'YYYY-MM-DD') END, 
+		CASE $5 WHEN 'NULL' THEN NULL ELSE cast(REPLACE($5,',','.') as float) END, 
+		CASE $6 WHEN 'NULL' THEN NULL ELSE cast(REPLACE($6,',','.') as float) END, 
+		CASE $7 WHEN 'NULL' THEN NULL ELSE $7 END, 
+		CASE $8 WHEN 'NULL' THEN NULL ELSE $8 END, 
+		now(), 
+		now())`
 	statement, err := r.db.Prepare(query)
 
 	if err != nil {
@@ -60,7 +67,7 @@ func (r *compraclienteRepositoryPostgres) InsertCompra(linha string) error {
 
 	defer statement.Close()
 
-	_, err = statement.Exec(linha)
+	_, err = statement.Exec(linha[0], linha[1], linha[2], linha[3], linha[4], linha[5], linha[6], linha[7])
 
 	if err != nil {
 		return err

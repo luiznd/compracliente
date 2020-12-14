@@ -15,16 +15,14 @@ import (
 
 func main() {
 	var conteudo []string
-	var registro string
 	var inic time.Time
 	var final time.Time
 
 	conteudo = nil
-
-	fmt.Println("=========================================================")
+	fmt.Println("====================================================")
 	fmt.Println("Go! integrando registros do arquivo para table temp")
 	inic = time.Now()
-	fmt.Println("==================" + inic.Format("2006-01-02 15:04:05") + "==========================")
+	fmt.Println("====================================================")
 
 	// Cria a conexão com  o banco
 	db, err := config.GetPostgresDB()
@@ -53,10 +51,10 @@ func main() {
 		fmt.Println(err)
 	}
 
-	// Insere todas as linhas do arquivo em uma tabela temporária, remove os espaços em branco até restar só um espaço
+	// Insere todas as linhas do arquivo em uma tabela temporária, remove os espaços em branco até restar só um espaço e padronizar os campos
 	for indice := range conteudo {
 		if indice != 0 {
-			registro = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(conteudo[indice], "  ", " "), "  ", " "), "  ", " "), "  ", " "), "  ", " ")
+			registro := strings.Fields(conteudo[indice])
 			err := insertCompraCliente(registro, compraclienteRepositoryPostgres)
 			if err != nil {
 				fmt.Println(err)
@@ -65,8 +63,9 @@ func main() {
 	}
 
 	final = time.Now()
+
 	fmt.Println("Fim da integração do arquivo")
-	fmt.Println("=================" + final.Format("2006-01-02 15:04:05") + "======================")
+	fmt.Println("==============================")
 
 	//Cria uma lista de compra clientes
 	compraclientes, err := getCompraClientesTmp(compraclienteRepositoryPostgres)
@@ -98,11 +97,15 @@ func main() {
 
 		} else if (utils.IsCNPJ(cliente.Loja_mais_frequente)) == false {
 
-			fmt.Println(cliente.Loja_mais_frequente + " Não é um CNPJ válido para Loja_mais_frequente!")
+			if cliente.Loja_mais_frequente != "NULL" {
+				fmt.Println(cliente.Loja_mais_frequente + " Não é um CNPJ válido para Loja_mais_frequente!")
+			}
 
 		} else if (utils.IsCNPJ(cliente.Loja_ultima_compra)) == false {
 
-			fmt.Println(cliente.Loja_ultima_compra + " Não é um CNPJ válido para Loja_ultima_compra!")
+			if cliente.Loja_mais_frequente != "NULL" {
+				fmt.Println(cliente.Loja_ultima_compra + " Não é um CNPJ válido para Loja_ultima_compra!")
+			}
 
 		} else {
 
@@ -114,15 +117,16 @@ func main() {
 	}
 
 	final = time.Now()
-	fmt.Println("==================" + inic.Format("2006-01-02 15:04:05") + "==========================")
-	fmt.Println("=========================================================")
+	fmt.Println("")
+	fmt.Println("")
+	fmt.Println("==================" + inic.Format("2006-01-02 15:04:05") + "=======================")
 	fmt.Println("Fim da inserção de dados na tabela final CompraCliente")
-	fmt.Println("=================" + final.Format("2006-01-02 15:04:05") + "======================")
-
+	fmt.Println("==================" + final.Format("2006-01-02 15:04:05") + "======================")
+	fmt.Println("")
 }
 
 // Insere os registros na tabela temporária
-func insertCompraCliente(p string, repo repository.CompraClienteRepository) error {
+func insertCompraCliente(p []string, repo repository.CompraClienteRepository) error {
 	err := repo.InsertCompra(p)
 
 	if err != nil {

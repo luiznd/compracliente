@@ -44,7 +44,7 @@ func isCPFOrCNPJ(doc string, pattern *regexp.Regexp, size int, position int) boo
 
 	cleanNonDigits(&doc)
 
-	// Invalidates documents with all digits equal.
+	// Invalida documentos com todos os dígitos iguais.
 	if allEq(doc) {
 		return false
 	}
