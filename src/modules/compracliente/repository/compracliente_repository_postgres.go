@@ -69,6 +69,7 @@ func (r *compraclienteRepositoryPostgres) InsertCompra(linha string) error {
 	return nil
 }
 
+// Atualiza os dados na tabela final compracliente por cpf
 func (r *compraclienteRepositoryPostgres) Update(cpf string, compracliente *model.CompraCliente) error {
 
 	query := `UPDATE "compracliente" SET "private"=$1, "incompleto"=$2, "data_ultima_compra"=$3, "compra_ticket_medio"=$4, "ticket_ultima_compra"=$5, "loja_mais_frequente"=$6, "loja_ultima_compra"=$7, "data_criacao"=$8, "data_modificacao"=$9 WHERE "cpf"=$10`
@@ -90,6 +91,7 @@ func (r *compraclienteRepositoryPostgres) Update(cpf string, compracliente *mode
 	return nil
 }
 
+// Deleta os dados na tabela final compracliente por cpf
 func (r *compraclienteRepositoryPostgres) Delete(cpf string) error {
 
 	query := `DELETE FROM "compracliente" WHERE "CPF" = $1`
@@ -175,7 +177,7 @@ func (r *compraclienteRepositoryPostgres) FindAllTmp() (model.CompraClientes, er
 	return compraclientes, nil
 }
 
-// Lista todos os registros da tabela tmp para ser feita a higienização dos dados após persistência , e a validação de CPFs/CNPJs contidos (válidos e não válidos numericamente)
+// Lista todos os registros da tabela final
 func (r *compraclienteRepositoryPostgres) FindAll() (model.CompraClientes, error) {
 
 	query := `SELECT 
@@ -214,4 +216,48 @@ func (r *compraclienteRepositoryPostgres) FindAll() (model.CompraClientes, error
 	}
 
 	return compraclientes, nil
+}
+
+// Deleta todos os registros da tabela final
+func (r *compraclienteRepositoryPostgres) DeleteAll() error {
+
+	query := `DELETE FROM "compracliente"`
+
+	statement, err := r.db.Prepare(query)
+
+	if err != nil {
+		return err
+	}
+
+	defer statement.Close()
+
+	_, err = statement.Exec()
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Deleta todos os registros da tabela tmp
+func (r *compraclienteRepositoryPostgres) DeleteAllTmp() error {
+
+	query := `DELETE FROM "tmp_compracliente"`
+
+	statement, err := r.db.Prepare(query)
+
+	if err != nil {
+		return err
+	}
+
+	defer statement.Close()
+
+	_, err = statement.Exec()
+
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

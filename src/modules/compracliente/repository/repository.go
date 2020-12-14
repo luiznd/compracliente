@@ -13,4 +13,6 @@ type CompraClienteRepository interface {
 	FindByCPF(string) (*model.CompraCliente, error)
 	FindAllTmp() (model.CompraClientes, error)
 	FindAll() (model.CompraClientes, error)
+	DeleteAll() error
+	DeleteAllTmp() error
 }

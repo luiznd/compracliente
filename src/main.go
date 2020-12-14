@@ -35,6 +35,18 @@ func main() {
 		fmt.Println(err)
 	}
 
+	//Limpa tabela gateway tmp
+	err = deleteCompraClienteAllTmp(compraclienteRepositoryPostgres)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	//Limpa tabela final compracliente
+	err = deleteCompraClienteAll(compraclienteRepositoryPostgres)
+	if err != nil {
+		fmt.Println(err)
+	}
+
 	// Carrega o arquivo com os dados
 	conteudo, err = fileinput.GetText("../files/base_teste.txt")
 	if err != nil {
@@ -184,4 +196,26 @@ func getCompraClientes(repo repository.CompraClienteRepository) (model.CompraCli
 	}
 
 	return compraclientes, nil
+}
+
+// Delete na tabela final
+func deleteCompraClienteAll(repo repository.CompraClienteRepository) error {
+	err := repo.DeleteAll()
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Delete na tabela tmp
+func deleteCompraClienteAllTmp(repo repository.CompraClienteRepository) error {
+	err := repo.DeleteAllTmp()
+
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
