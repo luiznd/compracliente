@@ -7,7 +7,7 @@ Diretório de arquivos de carga, confifuração e sql ./files
 
 ### Cadastro de compras por Cpf
 
-* Projeto de carga de dados ETL através de arquivo texto utilizando linguagem GO e banco de dados PostgresSql, há um CRUD também para falitar a manipulação dos dados posteriormente.
+* Projeto de carga de dados ETL através de arquivo texto utilizando linguagem GO e banco de dados PostgresSql, há um CRUD também para facilitar a manipulação dos dados posteriormente.
 
 * <p>Foco do projeto - > Carga de dados direto do arquivo base_teste.txt em tabela gateway temp_compracliente, Inclusão, validação e tratamento dos registros na tabela final compracliente.</p> 
 
@@ -19,9 +19,6 @@ Diretório de arquivos de carga, confifuração e sql ./files
 
 * Instalar o o Golang : https://golang.org/doc/install
 
-* Executar os scripts SQLs `tmp_compracliente.sql` e  `compracliente.sql` para criar as tabelas
-  que estão na pasta ./files no 'pgAdmin'
-
 * Instalar o Visual Studio Code para visualizar o código e executar o projeto.
 
 * Alterar as configurações de banco postgres de acordo com seu usuário, senha, servidor, porta e database
@@ -31,6 +28,9 @@ Diretório de arquivos de carga, confifuração e sql ./files
   Linha 3 : servidor
   Linha 4 : porta
   Linha 5 : database
+  
+  * Executar os scripts SQLs `tmp_compracliente.sql` e  `compracliente.sql` para criar as tabelas
+  que estão na pasta ./files no 'pgAdmin'
   
 ```
 
