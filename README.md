@@ -34,13 +34,14 @@ $ docker logs full_app
 ```
 ```
 * Para acessar o banco de dados e verificar as tabelas acesse o pgAdmin do Docker
-1-  http://localhost:5050
-    Usuario : luiznd@hotmail.com
-    senha: root
-    
-2 - Criar um novo server conforme a imagem do link abaixo, senha "root"
 
-    https://1drv.ms/u/s!Apyd3zQWtpsdghwBAhdYb2jiWXGF?e=KlfbmA
+    1-  http://localhost:5050
+        Usuario : luiznd@hotmail.com
+        senha: root
+
+    2 - Criar um novo server conforme a imagem do link abaixo, senha "root"
+
+        https://1drv.ms/u/s!Apyd3zQWtpsdghwBAhdYb2jiWXGF?e=KlfbmA
 ```
 ```
 * Alterar as configurações de banco postgres se for trabalhar local:
