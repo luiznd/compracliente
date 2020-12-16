@@ -268,3 +268,105 @@ func (r *compraclienteRepositoryPostgres) DeleteAllTmp() error {
 
 	return nil
 }
+
+// Cria tabela tmp se não existir
+func (r *compraclienteRepositoryPostgres) CreateTableTmp() error {
+
+	seq := `CREATE SEQUENCE IF NOT EXISTS public.sq_pk_tmp_compracliente START 1`
+
+	query := `CREATE TABLE IF NOT EXISTS tmp_compracliente (
+		id_compracliente BIGINT NOT NULL DEFAULT nextval('public.sq_pk_tmp_compracliente'),
+		CPF VARCHAR(20) NOT NULL,
+		private VARCHAR(20),
+		incompleto VARCHAR(20),
+		data_ultima_compra date,
+		compra_ticket_medio float,
+		ticket_ultima_compra float,
+		loja_mais_frequente VARCHAR(20),
+		loja_ultima_compra VARCHAR(20),
+		data_criacao timestamp,
+		data_modificacao timestamp,
+		CONSTRAINT pk_tmp_compracliente PRIMARY KEY (id_compracliente)
+	)`
+
+	statement, err := r.db.Prepare(seq)
+
+	if err != nil {
+		return err
+	}
+
+	defer statement.Close()
+
+	_, err = statement.Exec()
+
+	if err != nil {
+		return err
+	}
+
+	statement2, err2 := r.db.Prepare(query)
+
+	if err2 != nil {
+		return err2
+	}
+
+	defer statement2.Close()
+
+	_, err2 = statement2.Exec()
+
+	if err2 != nil {
+		return err2
+	}
+
+	return nil
+}
+
+// Cria tabela final se não existir
+func (r *compraclienteRepositoryPostgres) CreateTable() error {
+
+	seq := `CREATE SEQUENCE IF NOT EXISTS public.sq_pk_compracliente START 1`
+
+	query := `CREATE TABLE IF NOT EXISTS compracliente (
+		id_compracliente BIGINT NOT NULL DEFAULT nextval('public.sq_pk_compracliente'),
+		CPF VARCHAR(20) NOT NULL,
+		private VARCHAR(20),
+		incompleto VARCHAR(20),
+		data_ultima_compra date,
+		compra_ticket_medio float,
+		ticket_ultima_compra float,
+		loja_mais_frequente VARCHAR(20),
+		loja_ultima_compra VARCHAR(20),
+		data_criacao timestamp,
+		data_modificacao timestamp,
+		CONSTRAINT pk_compracliente PRIMARY KEY (id_compracliente)
+	)`
+
+	statement, err := r.db.Prepare(seq)
+
+	if err != nil {
+		return err
+	}
+
+	defer statement.Close()
+
+	_, err = statement.Exec()
+
+	if err != nil {
+		return err
+	}
+
+	statement2, err2 := r.db.Prepare(query)
+
+	if err2 != nil {
+		return err2
+	}
+
+	defer statement2.Close()
+
+	_, err2 = statement2.Exec()
+
+	if err2 != nil {
+		return err2
+	}
+
+	return nil
+}

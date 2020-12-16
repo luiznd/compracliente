@@ -15,4 +15,6 @@ type CompraClienteRepository interface {
 	FindAll() (model.CompraClientes, error)
 	DeleteAll() error
 	DeleteAllTmp() error
+	CreateTableTmp() error
+	CreateTable() error
 }

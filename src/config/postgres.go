@@ -18,7 +18,7 @@ func GetPostgresDB() (*sql.DB, error) {
 	dbname := "-"
 
 	var conteudo []string
-	conteudo, err := fileinput.GetText("../files/config.ini")
+	conteudo, err := fileinput.GetText("./files/config.ini")
 	if err != nil {
 		fmt.Println(err)
 	}

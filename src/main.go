@@ -33,6 +33,18 @@ func main() {
 		fmt.Println(err)
 	}
 
+	//Cria tabela gateway tmp se não existir
+	err = createCompraClienteTmp(compraclienteRepositoryPostgres)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	//Cria tabela final se não existir
+	err = createCompraCliente(compraclienteRepositoryPostgres)
+	if err != nil {
+		fmt.Println(err)
+	}
+
 	//Limpa tabela gateway tmp
 	err = deleteCompraClienteAllTmp(compraclienteRepositoryPostgres)
 	if err != nil {
@@ -46,7 +58,7 @@ func main() {
 	}
 
 	// Carrega o arquivo com os dados
-	conteudo, err = fileinput.GetText("../files/base_teste.txt")
+	conteudo, err = fileinput.GetText("./files/base_teste.txt")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -216,6 +228,26 @@ func deleteCompraClienteAll(repo repository.CompraClienteRepository) error {
 // Delete na tabela tmp
 func deleteCompraClienteAllTmp(repo repository.CompraClienteRepository) error {
 	err := repo.DeleteAllTmp()
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func createCompraClienteTmp(repo repository.CompraClienteRepository) error {
+	err := repo.CreateTableTmp()
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func createCompraCliente(repo repository.CompraClienteRepository) error {
+	err := repo.CreateTable()
 
 	if err != nil {
 		return err
