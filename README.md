@@ -50,15 +50,6 @@ $ docker logs full_app
 
         https://1drv.ms/u/s!Apyd3zQWtpsdghwBAhdYb2jiWXGF?e=KlfbmA
 ```
-```
-* Alterar as configurações de banco postgres se for trabalhar local:
-  Editar aquivo na pasta 'src/files/config.ini'
-  Linha 1 : usuário
-  Linha 2 : senha
-  Linha 3 : servidor
-  Linha 4 : porta
-  Linha 5 : database
-```  
 ```  
 * Parar o Docker se quiser
 $ docker-compose stop
@@ -69,7 +60,17 @@ $ docker system prune -a --volumes
 ``` 
 
 ### Execução local fora do Docker
+```
+* Alterar as configurações de banco postgres se for trabalhar local:
+  Editar aquivo na pasta 'src/files/config.ini'
+  Linha 1 : usuário
+  Linha 2 : senha
+  Linha 3 : servidor
+  Linha 4 : porta
+  Linha 5 : database
+```  
 * No terminal do Visual Studio Code acessar a pasta `cd src`  e executar o comando:  `go run main.go`
+
 
 ### Entidade
 \src\modules\compracliente\model\compracliente.go
