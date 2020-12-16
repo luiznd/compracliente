@@ -17,10 +17,9 @@ Diretório de arquivos de carga, confifuração e sql ./files
 
 * <p>Foco do projeto - > Carga de dados direto do arquivo base_teste.txt em tabela gateway temp_compracliente, Inclusão, validação e tratamento dos registros na tabela final compracliente.</p> 
 
-### Instalação
+### Instalação / Execução
 ```
 * Clonar projeto em um diretório local com o comando "git clone https://github.com/luiznd/compracliente"
-
 ```
 ```
 * Acessar a pasta ./src do projeto no seu terminal
@@ -29,10 +28,11 @@ Diretório de arquivos de carga, confifuração e sql ./files
 * Build dos serviços do docker com o comando:
 $ docker-compose up --build -d
 ```
-
+```
 * Para verificar o log e status do carregamento do arquivo digitar o comando:
 $ docker logs full_app
-
+```
+```
 * Para acessar o banco de dados e verificar as tabelas acesse o pgAdmin do Docker
 1-  http://localhost:5050
     Usuario : luiznd@hotmail.com
@@ -41,7 +41,8 @@ $ docker logs full_app
 2 - Criar um novo server conforme a imagem do link abaixo, senha "root"
 
     https://1drv.ms/u/s!Apyd3zQWtpsdghwBAhdYb2jiWXGF?e=KlfbmA
-
+```
+```
 * Alterar as configurações de banco postgres se for trabalhar local:
   Editar aquivo na pasta 'src/files/config.ini'
   Linha 1 : usuário
@@ -49,12 +50,22 @@ $ docker logs full_app
   Linha 3 : servidor
   Linha 4 : porta
   Linha 5 : database
-  
+```  
+```  
+* Parar o Docker se quiser
+$ docker-compose stop
+```  
+```  
+* Parar o Docker se quiser
+$ docker-compose stop
+```  
+```  
+* Excuir todas as imagens do Docker se necessário
+$ docker system prune -a --volumes
+``` 
 
-
-### Execução
+### Execução local fora do Docker
 * No terminal do Visual Studio Code acessar a pasta `cd src`  e executar o comando:  `go run main.go`
-
 
 ### Entidade
 \src\modules\compracliente\model\compracliente.go
