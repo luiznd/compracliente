@@ -38,8 +38,15 @@ $ docker logs full_app
     1-  http://localhost:5050
         Usuario : luiznd@hotmail.com
         senha: root
+        
+    2 - Encontrar o IP do postgres no Docker para criar server no pgAdimn conforme comando e link da imagem abaixo:
+    
+        $ docker inspect full_db_postgres
+    
+        https://1drv.ms/u/s!Apyd3zQWtpsdgh3Ymc3QXj8Zj1T8?e=CmtTMq
 
-    2 - Criar um novo server conforme a imagem do link abaixo, senha "root"
+
+    3 - Criar um novo server conforme a imagem do link abaixo, com o ip listado no passo anterior, senha "root"
 
         https://1drv.ms/u/s!Apyd3zQWtpsdghwBAhdYb2jiWXGF?e=KlfbmA
 ```
