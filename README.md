@@ -1,6 +1,12 @@
 Desafio - Compra cliente
 =======================
 
+### Requisitos
+
+* Docker
+https://www.docker.com/products/docker-desktop
+
+
 Diretório raiz dos codigos ./src
 <br>
 Diretório de arquivos de carga, confifuração e sql ./files
@@ -15,24 +21,36 @@ Diretório de arquivos de carga, confifuração e sql ./files
 ```
 * Clonar projeto em um diretório local com o comando "git clone https://github.com/luiznd/compracliente"
 
-* Instalar banco de dados postgresSql : https://www.postgresql.org/download/
+```
+```
+* Acessar a pasta ./src do projeto no seu terminal
+```
+```
+* Build dos serviços do docker com o comando:
+$ docker-compose up --build -d
+```
 
-* Instalar o o Golang : https://golang.org/doc/install
+* Para verificar o log e status do carregamento do arquivo digitar o comando:
+$ docker logs full_app
 
-* Instalar o Visual Studio Code para visualizar o código e executar o projeto.
+* Para acessar o banco de dados e verificar as tabelas acesse o pgAdmin do Docker
+1-  http://localhost:5050
+    Usuario : luiznd@hotmail.com
+    senha: root
+    
+2 - Criar um novo server conforme a imagem do link abaixo, senha "root"
 
-* Alterar as configurações de banco postgres de acordo com seu usuário, senha, servidor, porta e database
-  Editar aquivo na pasta '/files/config.ini'
+    https://1drv.ms/u/s!Apyd3zQWtpsdghwBAhdYb2jiWXGF?e=KlfbmA
+
+* Alterar as configurações de banco postgres se for trabalhar local:
+  Editar aquivo na pasta 'src/files/config.ini'
   Linha 1 : usuário
   Linha 2 : senha
   Linha 3 : servidor
   Linha 4 : porta
   Linha 5 : database
   
-  * Executar os scripts SQLs `tmp_compracliente.sql` e  `compracliente.sql` para criar as tabelas
-  que estão na pasta ./files no 'pgAdmin'
-  
-```
+
 
 ### Execução
 * No terminal do Visual Studio Code acessar a pasta `cd src`  e executar o comando:  `go run main.go`
