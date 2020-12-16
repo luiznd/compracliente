@@ -56,10 +56,6 @@ $ docker logs full_app
 $ docker-compose stop
 ```  
 ```  
-* Parar o Docker se quiser
-$ docker-compose stop
-```  
-```  
 * Excuir todas as imagens do Docker se necessário
 $ docker system prune -a --volumes
 ``` 
