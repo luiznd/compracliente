@@ -30,7 +30,7 @@ $ docker-compose up --build -d
 ```
 ```
 * Para verificar o log e status do carregamento do arquivo digitar o comando:
-$ docker logs full_app
+$ docker logs --follow full_app
 ```
 ```
 * Para acessar o banco de dados e verificar as tabelas acesse o pgAdmin do Docker
@@ -55,7 +55,7 @@ $ docker logs full_app
 $ docker-compose stop
 ```  
 ```  
-* Excuir todas as imagens do Docker se necessário
+* Excluir todas as imagens do Docker se necessário
 $ docker system prune -a --volumes
 ``` 
 
